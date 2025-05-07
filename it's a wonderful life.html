@@ -346,7 +346,7 @@ background-image: url(wonderful-phone.webp);
                         "fightClub.html"
                     ];
                     const currentIndex = movieList.indexOf(currentPage);
-                    if (currentIndex > 0) {
+                    if (currentIndex < movieList.length - 1) {
                         return movieList[currentIndex + 1];
                     }
                     return movieList[currentIndex + 1]; // Or movieList[0]; for looping
