@@ -232,9 +232,9 @@ background-image: url(wonderful-phone.webp);
                     ];
                     const currentIndex = movieList.indexOf(currentPage);
                     if (currentIndex > 0) {
-                        return null;
+                        return movieList[currentIndex - 1];
                     }
-                    return movieList[currentIndex - 1]; // Or movieList[movieList.length - 1]; for looping
+                    return movieList[movieList.length - 1]; // Or movieList[movieList.length - 1]; for looping
                 }
         
                 function getNextPageURL() {
@@ -347,9 +347,9 @@ background-image: url(wonderful-phone.webp);
                     ];
                     const currentIndex = movieList.indexOf(currentPage);
                     if (currentIndex < movieList.length - 1) {
-                        return null;
+                        return movieList[currentIndex + 1];
                     }
-                    return movieList[currentIndex + 1]; // Or movieList[0]; for looping
+                    return movieList[0]; // Or movieList[0]; for looping
                 }
             </script>
     </body>
