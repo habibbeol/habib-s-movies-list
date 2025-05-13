@@ -10,6 +10,12 @@ background-image:url(12fail.webp);
 background-attachment: fixed;
 background-size: 100% 100%;
 background-position: center;
+opacity: 0; /* Initially make the body content invisible */
+transition: opacity 0.3s ease-in-out; /* Apply a smooth fade-in transition */
+ }
+body.loaded {
+ opacity: 1; /* Make the body content visible when the 'loaded' class is added */
+                }
 }
             .container {
                 top: 0vmin;
@@ -71,6 +77,9 @@ background-image: url(12th-Failphone.jpeg);
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/WeMJo701mvQ?si=0qZQHH0KceGvaRrl">
             </iframe>
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('loaded');
+                });
                 document.addEventListener('touchstart', handleTouchStart, false);
                 document.addEventListener('touchmove', handleTouchMove, false);
         
