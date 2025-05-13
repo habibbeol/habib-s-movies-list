@@ -77,7 +77,9 @@ background-image: url(12th-Failphone.jpeg);
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/WeMJo701mvQ?si=0qZQHH0KceGvaRrl">
             </iframe>
         <script>
-           
+             document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('loaded');
+                });
                 document.addEventListener('touchstart', handleTouchStart, false);
                 document.addEventListener('touchmove', handleTouchMove, false);
         
@@ -353,9 +355,7 @@ background-image: url(12th-Failphone.jpeg);
                     }
                     return null; // Or movieList[0]; for looping
                 }
-             document.addEventListener('DOMContentLoaded', function() {
-                    document.body.classList.add('loaded');
-                });
+           
             </script>
     </body>
 </html>
