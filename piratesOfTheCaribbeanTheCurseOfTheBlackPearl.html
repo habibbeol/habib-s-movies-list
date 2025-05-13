@@ -83,6 +83,9 @@ background-image: url(piretesphone.jpg);
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/naQr0uTrH_s?si=RLl2qyjUiSW0K-q6">
             </iframe>
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('loaded');
+                });
                 document.addEventListener('touchstart', handleTouchStart, false);
                 document.addEventListener('touchmove', handleTouchMove, false);
         
