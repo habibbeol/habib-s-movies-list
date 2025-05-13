@@ -10,7 +10,12 @@ background-image:url(the_dark_knight.webp);
 background-attachment: fixed;
 background-size: 100% 100%;
 background-position: center;
-}
+     opacity: 0; /* Initially make the body content invisible */
+                    transition: opacity 0.3s ease-in-out; /* Apply a smooth fade-in transition */
+                }
+                body.loaded {
+                    opacity: 1; /* Make the body content visible when the 'loaded' class is added */
+                }
             .container {
                 top: 0vmin;
                 left: 0.7vmin;
@@ -73,6 +78,9 @@ background-image: url(https://m.media-amazon.com/images/M/MV5BNjEyNjE0YjItYWIwZi
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https:\\www.youtube.com/embed/EXeTwQWrcwY?si=hbSzkQvNREpEnrmf">
             </iframe>
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('loaded');
+                });
                 document.addEventListener('touchstart', handleTouchStart, false);
                 document.addEventListener('touchmove', handleTouchMove, false);
         
