@@ -6,7 +6,6 @@
                body{
 
 background-image:url(the_dark_knight.webp);
-
 background-attachment: fixed;
 background-size: 100% 100%;
 background-position: center;
@@ -81,16 +80,23 @@ background-image: url(https://m.media-amazon.com/images/M/MV5BNjEyNjE0YjItYWIwZi
            document.addEventListener('DOMContentLoaded', function() {
                     document.body.classList.add('loaded');
                 });
+             let x1 = null;
+        let y1 = null;
+        const fadeOutDuration = 300; // Duration of the fade-out in milliseconds
+
+        function fadeOut(element, callback, duration) {
+            element.style.transition = `opacity ${duration / 1000}s ease-in-out`;
+            element.style.opacity = 0;
+            setTimeout(callback, duration);
+        }
                 document.addEventListener('touchstart', handleTouchStart, false);
                 document.addEventListener('touchmove', handleTouchMove, false);
         
-                let x1 = null;
-                let y1 = null;
+        
         
                 function handleTouchStart(event) {
                     const firstTouch = event.touches[0];
                     x1 = firstTouch.clientX;
-        
                     y1 = firstTouch.clientY;
                 }
         
