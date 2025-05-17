@@ -92,7 +92,6 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "intersellar.html",
             "theGodfatherPartII.html",
             "theLordOfTheRingsTheThreePartsTogether.html",
-
             "wildTales.html",
             "theIsland2006RussianMovie.html",
             "aPlaceInTheSun.html",
@@ -104,6 +103,7 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "madMaxFuryRoad.html",
             "braveHeart.html",
             "benHurr.html",
+
             "quoVadis.html",
             "intoTheWild.html",
             "theShawshankRedemption.html",
@@ -115,7 +115,6 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "theGladiator.html",
             "onceUponATimaInAmerica.html",
             "cityOfGod.html",
-
             "theHunt.html",
             "thePianist.html",
             "theUsualSuspects.html",
@@ -129,6 +128,7 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "cinemaParadiso.html",
             "comeAndSee.html",
             "vertigo.html",
+
             "aClockworkOrange.html",
             "badBoyBubby.html",
             "amoresPerros.html",
@@ -140,7 +140,6 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "theApartment.html",
             "scarface.html",
             "catchMeIfYouCan.html",
-
             "goneGirl.html",
             "snatch.html",
             "memoriesOfMurder.html",
@@ -154,6 +153,7 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "thereWillBeBlood.html",
             "savingPrivateRyan.html",
             "theMatrix.html",
+
             "toKillAMockingbird.html",
             "shutterIsland.html",
             "dialMForMurder.html",
@@ -165,7 +165,6 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "drishyam.html",
             "oneFlewOverTheCuckoo'sNest.html",
             "se7en.html",
-
             "inception.html",
             "lordOfWar.html",
             "theHolyMountain.html",
@@ -179,6 +178,7 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "rashomon.html",
             "mulhollandDrive.html",
             "theGoodTheBadAndTheUgly.html",
+
             "someLikeItHot.html",
             "aBeautifulMind.html",
             "chinatown.html",
@@ -191,29 +191,40 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             "fightClub.html"
         ];
 
-
         const currentPage = window.location.pathname.split('/').pop();
         const currentIndex = movieList.indexOf(currentPage);
+
+        console.log("Current Page:", currentPage);
+        console.log("Current Index:", currentIndex);
 
         const swiper = new Swiper('.mySwiper', {
             direction: 'horizontal',
             loop: true,
             threshold: 50,
+
             on: {
                 slideNextTransitionStart: function () {
+                    let nextIndex;
                     if (currentIndex < movieList.length - 1) {
-                        window.location.href = movieList[currentIndex + 1];
-                    } else if (this.params.loop) {
-                        window.location.href = movieList[0];
+                        nextIndex = currentIndex + 1;
+                    } else {
+                        nextIndex = 0; // Loop to the beginning
                     }
+                    const nextPageURL = movieList[nextIndex];
+                    console.log("Navigating to next:", nextPageURL);
+                    window.location.href = nextPageURL;
                 },
                 slidePrevTransitionStart: function () {
+                    let prevIndex;
                     if (currentIndex > 0) {
-                        window.location.href = movieList[currentIndex - 1];
-
-                    } else if (this.params.loop) {
-                        window.location.href = movieList[movieList.length - 1];
+                        prevIndex = currentIndex - 1;
+                    } else {
+                        prevIndex = movieList.length - 1; // Loop to the end
                     }
+
+                    const prevPageURL = movieList[prevIndex];
+                    console.log("Navigating to previous:", prevPageURL);
+                    window.location.href = prevPageURL;
                 }
             },
             allowTouchMove: true,
@@ -221,5 +232,5 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
             grabCursor: true
         });
     </script>
-    </body>
+   </body>
 </html>
