@@ -48,6 +48,35 @@ margin-left: 4;
     height: 42vh;
     border: 1px solid rgb(255, 255, 255);
 }
+            .nav-arrow {
+                position: fixed; /* Keep them fixed relative to the viewport */
+                top: 50%; /* Vertically center */
+                transform: translateY(-50%); /* Adjust for vertical centering */
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+                color: white;
+                font-size: 8vmin; /* Large size for easy tapping */
+                padding: 1vmin 2vmin;
+                cursor: pointer;
+                user-select: none; /* Prevent text selection on tap */
+                border-radius: 5px;
+                z-index: 1000; /* Ensure they are above other content */
+                opacity: 0.7; /* Slightly transparent */
+                transition: opacity 0.2s ease; /* Smooth hover/tap effect */
+            }
+
+            .nav-arrow:hover {
+
+                opacity: 1; /* Fully opaque on hover/tap */
+            }
+
+            .nav-arrow.left {
+                left: 1vmin;
+            }
+
+            .nav-arrow.right {
+                right: 1vmin;
+            }
+            /* --- ARROW STYLES END --- */
             @media (max-aspect-ratio: 16/9){
                 body{
 background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg);
@@ -64,6 +93,11 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     width: 58vw;
                     height:25vh ;
                 }
+                  /* Adjust arrow size/position for mobile if needed */
+                .nav-arrow {
+                    font-size: 10vmin;
+                    padding: 0.5vmin 1.5vmin;
+                }
             }
         </style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -75,39 +109,40 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
         </div>
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/wJ1TOratCTo?si=v9lF-kUqPRQ8pbBx">
             </iframe>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-
+      <div class="nav-arrow left" id="leftArrow"><</div>
+        <div class="nav-arrow right" id="rightArrow">></div>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.body.classList.add('loaded');
-            });
+            // Get the arrow elements
+            const leftArrow = document.getElementById('leftArrow');
+            const rightArrow = document.getElementById('rightArrow');
 
-            // Get the element you want to apply gestures to (e.g., the body)
-            const bodyElement = document.body;
-
-            // Create a new Hammer.js instance on the body element
-            const mc = new Hammer(bodyElement);
-
-            // Enable swipe recognition
-            mc.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
-
-            // Listen for swipe left event
-            mc.on('swipeleft', function() {
-                const nextPageURL = getNextPageURL();
-                if (nextPageURL) {
-                    window.location.href = nextPageURL;
+            // **MODIFICATION START (This is the key for back button behavior)**
+            // Helper function to navigate and manage history
+            function navigateAndReplaceHistory(url) {
+                if (url) {
+                    // Use history.replaceState to replace the current history entry
+                    // This prevents multiple consecutive navigations from filling up the history stack
+                    history.replaceState(null, '', url);
+                    // Then, actually load the new page
+                    window.location.href = url;
                 }
-            });
+            }
+            // **MODIFICATION END**
 
-
-            // Listen for swipe right event
-            mc.on('swiperight', function() {
+            // Attach click listeners, using the new helper function
+            leftArrow.addEventListener('click', function() {
                 const previousPageURL = getPreviousPageURL();
-                if (previousPageURL) {
-                    window.location.href = previousPageURL;
-                }
+                navigateAndReplaceHistory(previousPageURL); // Use the history.replaceState helper
             });
 
+            rightArrow.addEventListener('click', function() {
+                const nextPageURL = 
+
+getNextPageURL();
+                navigateAndReplaceHistory(nextPageURL); // Use the history.replaceState helper
+            });
+
+            // Your existing movie list and page logic remain the same
             function getPreviousPageURL() {
                 const currentPage = window.location.pathname.split('/').pop();
                 const movieList = [
@@ -118,10 +153,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "intersellar.html",
                     "theGodfatherPartII.html",
                     "theLordOfTheRingsTheThreePartsTogether.html",
-
                     "wildTales.html",
                     "theIsland2006RussianMovie.html",
                     "aPlaceInTheSun.html",
+
                     "prideAndPrejudice.html",
                     "barryLyndon.html",
                     "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
@@ -141,10 +176,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "theGladiator.html",
                     "onceUponATimaInAmerica.html",
                     "cityOfGod.html",
-
                     "theHunt.html",
                     "thePianist.html",
                     "theUsualSuspects.html",
+
                     "djangoUnchained.html",
                     "apocalypseNow.html",
                     "americanHistoryX.html",
@@ -165,10 +200,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "theCuriousCaseOfBenjaminButton.html",
                     "theApartment.html",
                     "scarface.html",
-
                     "catchMeIfYouCan.html",
                     "goneGirl.html",
                     "snatch.html",
+
                     "memoriesOfMurder.html",
                     "borat.html",
                     "amadeus.html",
@@ -190,10 +225,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "theSeventhSeal.html",
                     "drishyam.html",
                     "oneFlewOverTheCuckoo'sNest.html",
-
                     "se7en.html",
                     "inception.html",
                     "lordOfWar.html",
+
                     "theHolyMountain.html",
                     "revenant.html",
                     "sevenSamurai.html",
@@ -215,13 +250,13 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "heat.html",
                     "fargo.html",
                     "fightClub.html"
-
                 ];
                 const currentIndex = movieList.indexOf(currentPage);
+
                 if (currentIndex > 0) {
                     return movieList[currentIndex - 1];
                 }
-                return movieList[movieList.length - 1]; // Or movieList[movieList.length - 1]; for looping
+                return movieList[movieList.length - 1]; // Loop to last page if at first
             }
 
             function getNextPageURL() {
@@ -235,10 +270,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "theGodfatherPartII.html",
                     "theLordOfTheRingsTheThreePartsTogether.html",
                     "wildTales.html",
-
                     "theIsland2006RussianMovie.html",
                     "aPlaceInTheSun.html",
                     "prideAndPrejudice.html",
+
                     "barryLyndon.html",
                     "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
                     "thedarkKnight2008.html",
@@ -258,10 +293,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "onceUponATimaInAmerica.html",
                     "cityOfGod.html",
                     "theHunt.html",
-
                     "thePianist.html",
                     "theUsualSuspects.html",
                     "djangoUnchained.html",
+
                     "apocalypseNow.html",
                     "americanHistoryX.html",
                     "schindler'sList.html",
@@ -282,10 +317,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "theApartment.html",
                     "scarface.html",
                     "catchMeIfYouCan.html",
-
                     "goneGirl.html",
                     "snatch.html",
                     "memoriesOfMurder.html",
+
                     "borat.html",
                     "amadeus.html",
                     "psycho.html",
@@ -307,10 +342,10 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "drishyam.html",
                     "oneFlewOverTheCuckoo'sNest.html",
                     "se7en.html",
-
                     "inception.html",
                     "lordOfWar.html",
                     "theHolyMountain.html",
+
                     "revenant.html",
                     "sevenSamurai.html",
                     "allAboutEve.html",
@@ -332,12 +367,12 @@ background-image: url(https://figar.ir/wp-content/uploads/2021/06/%DB%B1-10.jpg)
                     "fargo.html",
                     "fightClub.html"
                 ];
-
                 const currentIndex = movieList.indexOf(currentPage);
                 if (currentIndex < movieList.length - 1) {
+
                     return movieList[currentIndex + 1];
                 }
-                return null; // Or movieList[0]; for looping
+                return movieList[0]; // Loop to first page if at last
             }
         </script>
    </body>
