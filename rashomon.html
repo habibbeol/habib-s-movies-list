@@ -48,6 +48,35 @@ margin-left: 4;
     height: 42vh;
     border: 1px solid rgb(0, 255, 149);
 }
+            .nav-arrow {
+                position: fixed; /* Keep them fixed relative to the viewport */
+                top: 50%; /* Vertically center */
+                transform: translateY(-50%); /* Adjust for vertical centering */
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+                color: white;
+                font-size: 8vmin; /* Large size for easy tapping */
+                padding: 1vmin 2vmin;
+                cursor: pointer;
+                user-select: none; /* Prevent text selection on tap */
+                border-radius: 5px;
+                z-index: 1000; /* Ensure they are above other content */
+                opacity: 0.7; /* Slightly transparent */
+                transition: opacity 0.2s ease; /* Smooth hover/tap effect */
+            }
+
+            .nav-arrow:hover {
+
+                opacity: 1; /* Fully opaque on hover/tap */
+            }
+
+            .nav-arrow.left {
+                left: 1vmin;
+            }
+
+            .nav-arrow.right {
+                right: 1vmin;
+            }
+            /* --- ARROW STYLES END --- */
             @media (max-aspect-ratio: 16/9){
                 body{
 background-image: url(https://screenmusings.org/movie/blu-ray/Rashomon/images/Rashomon-133.jpg);
