@@ -4,10 +4,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
                body{
-
 background-image:url(https://a.ltrbxd.com/resized/sm/upload/fm/6b/gd/js/the-revenant-2015-1200-1200-675-675-crop-000000.jpg?k=e66ecbb285);
 background-repeat: no-repeat;
-
 background-attachment: fixed;
 background-size:100% 100%;
 background-position: center;
@@ -78,163 +76,270 @@ background-image: url(https://dl9fvu4r30qs1.cloudfront.net/29/5e/4bb656f2488c969
         </div>
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/LoebZZ8K5N0?si=s0N64GL6xc31fUKx">
             </iframe>
-       <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"></div>
-        </div>
-    </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.classList.add('loaded');
+            });
 
-      
-       <script>
-        const movieList = [
-            "it's a wonderful life.html",
-            "theGodFather.html",
-            "thePassionOfTheChrist.html",
-            "witnessForTheProsecution.html",
-            "intersellar.html",
-            "theGodfatherPartII.html",
-            "theLordOfTheRingsTheThreePartsTogether.html",
-            "wildTales.html",
-            "theIsland2006RussianMovie.html",
-            "aPlaceInTheSun.html",
-            "prideAndPrejudice.html",
-            "barryLyndon.html",
-            "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
-            "thedarkKnight2008.html",
-            "12thFail.html",
-            "madMaxFuryRoad.html",
-            "braveHeart.html",
-            "benHurr.html",
+            // Get the element you want to apply gestures to (e.g., the body)
+            const bodyElement = document.body;
 
-            "quoVadis.html",
-            "intoTheWild.html",
-            "theShawshankRedemption.html",
-            "pulpFiction.html",
-            "goodFellas.html",
-            "forrestGump.html",
-            "apocalypto.html",
-            "parasite.html",
-            "theGladiator.html",
-            "onceUponATimaInAmerica.html",
-            "cityOfGod.html",
-            "theHunt.html",
-            "thePianist.html",
-            "theUsualSuspects.html",
-            "djangoUnchained.html",
-            "apocalypseNow.html",
-            "americanHistoryX.html",
-            "schindler'sList.html",
-            "theWolfOfWallStreet.html",
-            "theSilenceOfTheLambs.html",
-            "theGreenMile.html",
-            "cinemaParadiso.html",
-            "comeAndSee.html",
-            "vertigo.html",
+            // Create a new Hammer.js instance on the body element
+            const mc = new Hammer(bodyElement);
 
-            "aClockworkOrange.html",
-            "badBoyBubby.html",
-            "amoresPerros.html",
-            "reservoirDogs.html",
-            "americanBeauty.html",
-            "rearWindow.html",
-            "requiemForADream.html",
-            "theCuriousCaseOfBenjaminButton.html",
-            "theApartment.html",
-            "scarface.html",
-            "catchMeIfYouCan.html",
-            "goneGirl.html",
-            "snatch.html",
-            "memoriesOfMurder.html",
-            "borat.html",
-            "amadeus.html",
-            "psycho.html",
-            "leon.html",
-            "sunsetBoulevard.html",
-            "oldboy.html",
-            "fullMetalJacket.html",
-            "thereWillBeBlood.html",
-            "savingPrivateRyan.html",
-            "theMatrix.html",
+            // Enable swipe recognition
+            mc.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
 
-            "toKillAMockingbird.html",
-            "shutterIsland.html",
-            "dialMForMurder.html",
-            "annieHall.html",
-            "onTheWaterfront.html",
-            "wildStrawberries.html",
-            "rush.html",
-            "theSeventhSeal.html",
-            "drishyam.html",
-            "oneFlewOverTheCuckoo'sNest.html",
-            "se7en.html",
-            "inception.html",
-            "lordOfWar.html",
-            "theHolyMountain.html",
-            "revenant.html",
-            "sevenSamurai.html",
-            "allAboutEve.html",
-            "dancesWithWolves.html",
-            "theLastSamurai.html",
-            "hacksawRidge.html",
-            "doubleIndemnity.html",
-            "rashomon.html",
-            "mulhollandDrive.html",
-            "theGoodTheBadAndTheUgly.html",
-
-            "someLikeItHot.html",
-            "aBeautifulMind.html",
-            "chinatown.html",
-            "theThirdMan.html",
-            "M.html",
-            "spotlight.html",
-            "inTheNameOfTheFather.html",
-            "heat.html",
-            "fargo.html",
-            "fightClub.html"
-        ];
-
-        const currentPage = window.location.pathname.split('/').pop();
-        const currentIndex = movieList.indexOf(currentPage);
-
-        console.log("Current Page:", currentPage);
-        console.log("Current Index:", currentIndex);
-
-        const swiper = new Swiper('.mySwiper', {
-            direction: 'horizontal',
-            loop: false,
-            threshold: 50,
-
-            on: {
-                slideNextTransitionStart: function () {
-                    let nextIndex;
-                    if (currentIndex < movieList.length - 1) {
-                        nextIndex = currentIndex + 1;
-                    } else {
-                        nextIndex = 0; // Loop to the beginning
-                    }
-                    const nextPageURL = movieList[nextIndex];
-                    console.log("Navigating to next:", nextPageURL);
+            // Listen for swipe left event
+            mc.on('swipeleft', function() {
+                const nextPageURL = getNextPageURL();
+                if (nextPageURL) {
                     window.location.href = nextPageURL;
-                },
-                slidePrevTransitionStart: function () {
-                    let prevIndex;
-                    if (currentIndex > 0) {
-                        prevIndex = currentIndex - 1;
-                    } else {
-                        prevIndex = movieList.length - 1; // Loop to the end
-                    }
-
-                    const prevPageURL = movieList[prevIndex];
-                    console.log("Navigating to previous:", prevPageURL);
-                    window.location.href = prevPageURL;
                 }
-            },
-            allowTouchMove: true,
-            simulateTouch: true,
-            grabCursor: true
-        });
-    </script>
+            });
+
+
+            // Listen for swipe right event
+            mc.on('swiperight', function() {
+                const previousPageURL = getPreviousPageURL();
+                if (previousPageURL) {
+                    window.location.href = previousPageURL;
+                }
+            });
+
+            function getPreviousPageURL() {
+                const currentPage = window.location.pathname.split('/').pop();
+                const movieList = [
+                    "it's a wonderful life.html",
+                    "theGodFather.html",
+                    "thePassionOfTheChrist.html",
+                    "witnessForTheProsecution.html",
+                    "intersellar.html",
+                    "theGodfatherPartII.html",
+                    "theLordOfTheRingsTheThreePartsTogether.html",
+
+                    "wildTales.html",
+                    "theIsland2006RussianMovie.html",
+                    "aPlaceInTheSun.html",
+                    "prideAndPrejudice.html",
+                    "barryLyndon.html",
+                    "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
+                    "thedarkKnight2008.html",
+                    "12thFail.html",
+                    "madMaxFuryRoad.html",
+                    "braveHeart.html",
+                    "benHurr.html",
+                    "quoVadis.html",
+                    "intoTheWild.html",
+                    "theShawshankRedemption.html",
+                    "pulpFiction.html",
+                    "goodFellas.html",
+                    "forrestGump.html",
+                    "apocalypto.html",
+                    "parasite.html",
+                    "theGladiator.html",
+                    "onceUponATimaInAmerica.html",
+                    "cityOfGod.html",
+
+                    "theHunt.html",
+                    "thePianist.html",
+                    "theUsualSuspects.html",
+                    "djangoUnchained.html",
+                    "apocalypseNow.html",
+                    "americanHistoryX.html",
+                    "schindler'sList.html",
+                    "theWolfOfWallStreet.html",
+                    "theSilenceOfTheLambs.html",
+                    "theGreenMile.html",
+                    "cinemaParadiso.html",
+                    "comeAndSee.html",
+                    "vertigo.html",
+                    "aClockworkOrange.html",
+                    "badBoyBubby.html",
+                    "amoresPerros.html",
+                    "reservoirDogs.html",
+                    "americanBeauty.html",
+                    "rearWindow.html",
+                    "requiemForADream.html",
+                    "theCuriousCaseOfBenjaminButton.html",
+                    "theApartment.html",
+                    "scarface.html",
+
+                    "catchMeIfYouCan.html",
+                    "goneGirl.html",
+                    "snatch.html",
+                    "memoriesOfMurder.html",
+                    "borat.html",
+                    "amadeus.html",
+                    "psycho.html",
+                    "leon.html",
+                    "sunsetBoulevard.html",
+                    "oldboy.html",
+                    "fullMetalJacket.html",
+                    "thereWillBeBlood.html",
+                    "savingPrivateRyan.html",
+                    "theMatrix.html",
+                    "toKillAMockingbird.html",
+                    "shutterIsland.html",
+                    "dialMForMurder.html",
+                    "annieHall.html",
+                    "onTheWaterfront.html",
+                    "wildStrawberries.html",
+                    "rush.html",
+                    "theSeventhSeal.html",
+                    "drishyam.html",
+                    "oneFlewOverTheCuckoo'sNest.html",
+
+                    "se7en.html",
+                    "inception.html",
+                    "lordOfWar.html",
+                    "theHolyMountain.html",
+                    "revenant.html",
+                    "sevenSamurai.html",
+                    "allAboutEve.html",
+                    "dancesWithWolves.html",
+                    "theLastSamurai.html",
+                    "hacksawRidge.html",
+                    "doubleIndemnity.html",
+                    "rashomon.html",
+                    "mulhollandDrive.html",
+                    "theGoodTheBadAndTheUgly.html",
+                    "someLikeItHot.html",
+                    "aBeautifulMind.html",
+                    "chinatown.html",
+                    "theThirdMan.html",
+                    "M.html",
+                    "spotlight.html",
+                    "inTheNameOfTheFather.html",
+                    "heat.html",
+                    "fargo.html",
+                    "fightClub.html"
+
+                ];
+                const currentIndex = movieList.indexOf(currentPage);
+                if (currentIndex > 0) {
+                    return movieList[currentIndex - 1];
+                }
+                return movieList[movieList.length - 1]; // Or movieList[movieList.length - 1]; for looping
+            }
+
+            function getNextPageURL() {
+                const currentPage = window.location.pathname.split('/').pop();
+                const movieList = [
+                    "it's a wonderful life.html",
+                    "theGodFather.html",
+                    "thePassionOfTheChrist.html",
+                    "witnessForTheProsecution.html",
+                    "intersellar.html",
+                    "theGodfatherPartII.html",
+                    "theLordOfTheRingsTheThreePartsTogether.html",
+                    "wildTales.html",
+
+                    "theIsland2006RussianMovie.html",
+                    "aPlaceInTheSun.html",
+                    "prideAndPrejudice.html",
+                    "barryLyndon.html",
+                    "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
+                    "thedarkKnight2008.html",
+                    "12thFail.html",
+                    "madMaxFuryRoad.html",
+                    "braveHeart.html",
+                    "benHurr.html",
+                    "quoVadis.html",
+                    "intoTheWild.html",
+                    "theShawshankRedemption.html",
+                    "pulpFiction.html",
+                    "goodFellas.html",
+                    "forrestGump.html",
+                    "apocalypto.html",
+                    "parasite.html",
+                    "theGladiator.html",
+                    "onceUponATimaInAmerica.html",
+                    "cityOfGod.html",
+                    "theHunt.html",
+
+                    "thePianist.html",
+                    "theUsualSuspects.html",
+                    "djangoUnchained.html",
+                    "apocalypseNow.html",
+                    "americanHistoryX.html",
+                    "schindler'sList.html",
+                    "theWolfOfWallStreet.html",
+                    "theSilenceOfTheLambs.html",
+                    "theGreenMile.html",
+                    "cinemaParadiso.html",
+                    "comeAndSee.html",
+                    "vertigo.html",
+                    "aClockworkOrange.html",
+                    "badBoyBubby.html",
+                    "amoresPerros.html",
+                    "reservoirDogs.html",
+                    "americanBeauty.html",
+                    "rearWindow.html",
+                    "requiemForADream.html",
+                    "theCuriousCaseOfBenjaminButton.html",
+                    "theApartment.html",
+                    "scarface.html",
+                    "catchMeIfYouCan.html",
+
+                    "goneGirl.html",
+                    "snatch.html",
+                    "memoriesOfMurder.html",
+                    "borat.html",
+                    "amadeus.html",
+                    "psycho.html",
+                    "leon.html",
+                    "sunsetBoulevard.html",
+                    "oldboy.html",
+                    "fullMetalJacket.html",
+                    "thereWillBeBlood.html",
+                    "savingPrivateRyan.html",
+                    "theMatrix.html",
+                    "toKillAMockingbird.html",
+                    "shutterIsland.html",
+                    "dialMForMurder.html",
+                    "annieHall.html",
+                    "onTheWaterfront.html",
+                    "wildStrawberries.html",
+                    "rush.html",
+                    "theSeventhSeal.html",
+                    "drishyam.html",
+                    "oneFlewOverTheCuckoo'sNest.html",
+                    "se7en.html",
+
+                    "inception.html",
+                    "lordOfWar.html",
+                    "theHolyMountain.html",
+                    "revenant.html",
+                    "sevenSamurai.html",
+                    "allAboutEve.html",
+                    "dancesWithWolves.html",
+                    "theLastSamurai.html",
+                    "hacksawRidge.html",
+                    "doubleIndemnity.html",
+                    "rashomon.html",
+                    "mulhollandDrive.html",
+                    "theGoodTheBadAndTheUgly.html",
+                    "someLikeItHot.html",
+                    "aBeautifulMind.html",
+                    "chinatown.html",
+                    "theThirdMan.html",
+                    "M.html",
+                    "spotlight.html",
+                    "inTheNameOfTheFather.html",
+                    "heat.html",
+                    "fargo.html",
+                    "fightClub.html"
+                ];
+
+                const currentIndex = movieList.indexOf(currentPage);
+                if (currentIndex < movieList.length - 1) {
+                    return movieList[currentIndex + 1];
+                }
+                return null; // Or movieList[0]; for looping
+            }
+        </script>
    </body>
 </html>
