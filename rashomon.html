@@ -48,35 +48,7 @@ margin-left: 4;
     height: 42vh;
     border: 1px solid rgb(0, 255, 149);
 }
-            .nav-arrow {
-                position: fixed; /* Keep them fixed relative to the viewport */
-                top: 50%; /* Vertically center */
-                transform: translateY(-50%); /* Adjust for vertical centering */
-                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-                color: white;
-                font-size: 8vmin; /* Large size for easy tapping */
-                padding: 1vmin 2vmin;
-                cursor: pointer;
-                user-select: none; /* Prevent text selection on tap */
-                border-radius: 5px;
-                z-index: 1000; /* Ensure they are above other content */
-                opacity: 0.7; /* Slightly transparent */
-                transition: opacity 0.2s ease; /* Smooth hover/tap effect */
-            }
-
-            .nav-arrow:hover {
-
-                opacity: 1; /* Fully opaque on hover/tap */
-            }
-
-            .nav-arrow.left {
-                left: 1vmin;
-            }
-
-            .nav-arrow.right {
-                right: 1vmin;
-            }
-            /* --- ARROW STYLES END --- */
+           
             @media (max-aspect-ratio: 16/9){
                 body{
 background-image: url(https://screenmusings.org/movie/blu-ray/Rashomon/images/Rashomon-133.jpg);
@@ -96,11 +68,7 @@ background-image: url(https://screenmusings.org/movie/blu-ray/Rashomon/images/Ra
                     width: 58vw;
                     height:25vh ;
                 }
-                    /* Adjust arrow size/position for mobile if needed */
-                .nav-arrow {
-                    font-size: 10vmin;
-                    padding: 0.5vmin 1.5vmin;
-                }
+               
             }
         </style>
     </head>
@@ -111,44 +79,51 @@ background-image: url(https://screenmusings.org/movie/blu-ray/Rashomon/images/Ra
         </div>
           <iframe  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/ykJoWIY8j_s?si=UnAccylVx1iO6lhZ">
             </iframe>
-         <div class="nav-arrow left" id="leftArrow"><</div>
-        <div class="nav-arrow right" id="rightArrow">></div>
-        <script>
-            // Get the arrow elements
-            const leftArrow = document.getElementById('leftArrow');
-            const rightArrow = document.getElementById('rightArrow');
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
-            // **MODIFICATION START (This is the key for back button behavior)**
-            // Helper function to navigate and manage history
+        <script>
+            // Get the element you want to apply gestures to (e.g., the body)
+            const bodyElement = document.body;
+
+            // Create a new Hammer.js instance on the body element
+            const mc = new Hammer(bodyElement);
+
+            // Enable swipe recognition, specifically horizontal swipes
+
+            mc.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+
+            // **Crucial: Helper function to navigate and manage browser history**
+            // This function replaces the current history entry, preventing the back button
+            // from stepping through every swiped page.
             function navigateAndReplaceHistory(url) {
                 if (url) {
-                    // Use history.replaceState to replace the current history entry
-                    // This prevents multiple consecutive navigations from filling up the history stack
+                    // This command replaces the current URL in the browser's history
+                    // stack without adding a new entry.
                     history.replaceState(null, '', url);
-                    // Then, actually load the new page
+                    // Then, we actually load the new page.
                     window.location.href = url;
                 }
             }
-            // **MODIFICATION END**
 
-            // Attach click listeners, using the new helper function
-            leftArrow.addEventListener('click', function() {
+            // Listen for swipe left event from Hammer.js
+            mc.on('swipeleft', function() {
+
+                const nextPageURL = getNextPageURL();
+                navigateAndReplaceHistory(nextPageURL); // Use the history-aware navigation
+            });
+
+            // Listen for swipe right event from Hammer.js
+            mc.on('swiperight', function() {
                 const previousPageURL = getPreviousPageURL();
-                navigateAndReplaceHistory(previousPageURL); // Use the history.replaceState helper
+                navigateAndReplaceHistory(previousPageURL); // Use the history-aware navigation
             });
 
-            rightArrow.addEventListener('click', function() {
-                const nextPageURL = 
-
-getNextPageURL();
-                navigateAndReplaceHistory(nextPageURL); // Use the history.replaceState helper
-            });
-
-            // Your existing movie list and page logic remain the same
+            // Your existing movie list and page logic for determining next/previous URLs
             function getPreviousPageURL() {
                 const currentPage = window.location.pathname.split('/').pop();
                 const movieList = [
                     "it's a wonderful life.html",
+
                     "theGodFather.html",
                     "thePassionOfTheChrist.html",
                     "witnessForTheProsecution.html",
@@ -158,7 +133,6 @@ getNextPageURL();
                     "wildTales.html",
                     "theIsland2006RussianMovie.html",
                     "aPlaceInTheSun.html",
-
                     "prideAndPrejudice.html",
                     "barryLyndon.html",
                     "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
@@ -170,6 +144,7 @@ getNextPageURL();
                     "quoVadis.html",
                     "intoTheWild.html",
                     "theShawshankRedemption.html",
+
                     "pulpFiction.html",
                     "goodFellas.html",
                     "forrestGump.html",
@@ -181,7 +156,6 @@ getNextPageURL();
                     "theHunt.html",
                     "thePianist.html",
                     "theUsualSuspects.html",
-
                     "djangoUnchained.html",
                     "apocalypseNow.html",
                     "americanHistoryX.html",
@@ -195,6 +169,7 @@ getNextPageURL();
                     "aClockworkOrange.html",
                     "badBoyBubby.html",
                     "amoresPerros.html",
+
                     "reservoirDogs.html",
                     "americanBeauty.html",
                     "rearWindow.html",
@@ -205,7 +180,6 @@ getNextPageURL();
                     "catchMeIfYouCan.html",
                     "goneGirl.html",
                     "snatch.html",
-
                     "memoriesOfMurder.html",
                     "borat.html",
                     "amadeus.html",
@@ -219,6 +193,7 @@ getNextPageURL();
                     "theMatrix.html",
                     "toKillAMockingbird.html",
                     "shutterIsland.html",
+
                     "dialMForMurder.html",
                     "annieHall.html",
                     "onTheWaterfront.html",
@@ -230,7 +205,6 @@ getNextPageURL();
                     "se7en.html",
                     "inception.html",
                     "lordOfWar.html",
-
                     "theHolyMountain.html",
                     "revenant.html",
                     "sevenSamurai.html",
@@ -244,6 +218,7 @@ getNextPageURL();
                     "theGoodTheBadAndTheUgly.html",
                     "someLikeItHot.html",
                     "aBeautifulMind.html",
+
                     "chinatown.html",
                     "theThirdMan.html",
                     "M.html",
@@ -254,7 +229,6 @@ getNextPageURL();
                     "fightClub.html"
                 ];
                 const currentIndex = movieList.indexOf(currentPage);
-
                 if (currentIndex > 0) {
                     return movieList[currentIndex - 1];
                 }
@@ -266,6 +240,7 @@ getNextPageURL();
                 const movieList = [
                     "it's a wonderful life.html",
                     "theGodFather.html",
+
                     "thePassionOfTheChrist.html",
                     "witnessForTheProsecution.html",
                     "intersellar.html",
@@ -275,7 +250,6 @@ getNextPageURL();
                     "theIsland2006RussianMovie.html",
                     "aPlaceInTheSun.html",
                     "prideAndPrejudice.html",
-
                     "barryLyndon.html",
                     "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
                     "thedarkKnight2008.html",
@@ -287,6 +261,7 @@ getNextPageURL();
                     "intoTheWild.html",
                     "theShawshankRedemption.html",
                     "pulpFiction.html",
+
                     "goodFellas.html",
                     "forrestGump.html",
                     "apocalypto.html",
@@ -298,7 +273,6 @@ getNextPageURL();
                     "thePianist.html",
                     "theUsualSuspects.html",
                     "djangoUnchained.html",
-
                     "apocalypseNow.html",
                     "americanHistoryX.html",
                     "schindler'sList.html",
@@ -312,6 +286,7 @@ getNextPageURL();
                     "badBoyBubby.html",
                     "amoresPerros.html",
                     "reservoirDogs.html",
+
                     "americanBeauty.html",
                     "rearWindow.html",
                     "requiemForADream.html",
@@ -322,7 +297,6 @@ getNextPageURL();
                     "goneGirl.html",
                     "snatch.html",
                     "memoriesOfMurder.html",
-
                     "borat.html",
                     "amadeus.html",
                     "psycho.html",
@@ -336,6 +310,7 @@ getNextPageURL();
                     "toKillAMockingbird.html",
                     "shutterIsland.html",
                     "dialMForMurder.html",
+
                     "annieHall.html",
                     "onTheWaterfront.html",
                     "wildStrawberries.html",
@@ -347,7 +322,6 @@ getNextPageURL();
                     "inception.html",
                     "lordOfWar.html",
                     "theHolyMountain.html",
-
                     "revenant.html",
                     "sevenSamurai.html",
                     "allAboutEve.html",
@@ -361,6 +335,7 @@ getNextPageURL();
                     "someLikeItHot.html",
                     "aBeautifulMind.html",
                     "chinatown.html",
+
                     "theThirdMan.html",
                     "M.html",
                     "spotlight.html",
@@ -371,7 +346,6 @@ getNextPageURL();
                 ];
                 const currentIndex = movieList.indexOf(currentPage);
                 if (currentIndex < movieList.length - 1) {
-
                     return movieList[currentIndex + 1];
                 }
                 return movieList[0]; // Loop to first page if at last
@@ -379,4 +353,3 @@ getNextPageURL();
         </script>
     </body>
 </html>
-
