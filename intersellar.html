@@ -424,14 +424,14 @@ document.getElementById('rightArrow');
             setTimeout(() => {
                 leftArrow.classList.add('show');    // Add 'show' class to make them visible
                 rightArrow.classList.add('show');
-            }, 500); // Arrows appear after 0.5 seconds
+            }, 800); // Arrows appear after 0.5 seconds
 
             // Step 2: After the arrows have been visible for a while (e.g., 2.5 seconds),
             // start fading them out.
             setTimeout(() => {
                 leftArrow.classList.remove('show'); // Remove 'show' class to fade them out
                 rightArrow.classList.remove('show');
-            }, 3000); // Arrows start fading out after a total of 3 seconds (0.5s delay + 2.5s visible time)
+            }, 4000); // Arrows start fading out after a total of 3 seconds (0.5s delay + 2.5s visible time)
         });
     </script>
     </body>
