@@ -1,228 +1,170 @@
-
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            background-image:url(12fail.webp);
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            background-position: center;
-          background-repeat: no-repeat;
-        }
-       
-
-        .container {
-            top: 0vmin;
-
-            left: 0.7vmin;
-            height:auto;
-            width: 63vmin;
-            background-color:rgba(75, 75, 75, 0.854);
-            position: absolute;
-            border-radius: 6px;
-        }
-        h1{
-            color:white;
-            margin-top: 0;
-            font-size: 5.2vmin;
-            padding: 0.1rem;
-            margin-left: 4;
-        }
-        p{
-            color:rgb(255, 0, 140);
-            width: 62vmin;
-            font-size: 3.7vmin;
-            margin-top: -16;
-            margin-left: 4;
-        }
-        iframe{
-            position: absolute;
-            bottom: 0vmin;
-
-            right :0vmin;
-            border-radius: 6px;
-            width: 25vw;
-            height: 42vh;
-            border: 1px solid rgb(255, 0, 230);
-        }
-        @media (max-aspect-ratio: 16/9){
-            body{
-                background-image: url(12th-Failphone.jpeg);
-                background-size:100% 100%;
+<!DOCTYPE html>
+<html lang="en">	
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>12th Fail</title> <style>
+            body {
+                margin: 0; /* Remove default body margin */
+                overflow: hidden; /* Prevent body scroll during animation */
+                background-image: url(12fail.webp);
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                background-position: center;
             }
+
+            /* New: Container for 3D perspective */
+            .viewport-container {
+                perspective: 1200px; /* Crucial for 3D effect. Adjust this value for more or less depth! */
+                width: 100vw;
+                height: 100vh;
+
+                overflow: hidden; /* Hide content beyond viewport */
+                position: relative; /* Needed for absolute positioning of child elements */
+            }
+
             .container {
-                background-color: rgba(0, 0, 0, 0.461);
-                left:0.4vw;
-            }
-            iframe {
-                bottom: 0;
-                left: 0px;
-                border:1px solid rgb(246, 255, 0);
-                width: 58vw;
-                height:25vh ;
-            }
-        }
-    </style>
+                /* Your existing container styles */
+                top: 0vmin;
+                left: 0.7vmin;
+                height: auto; /* This might need adjustment if content overflows dynamically */
+                width: 60vmin;
+                background-color: rgba(75, 75, 75, 0.854);
+                position: absolute; /* Keep it absolute as it will be transformed */
+                border-radius: 6px;
 
-</head>
-<body>
-    <div class="container">
-        <h1>15. 12th Fail .</h1>
-        <p>An inspiring Indian biographical drama that chronicles the extraordinary journey of a high school dropout who, after a 12-year study, overcomes adversity to achieve his dream of becoming a police officer . </p>
-    </div>
-    <iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/WeMJo701mvQ?si=0qZQHH0KceGvaRrl">
-    </iframe>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+                /* New: 3D transform properties for rotation */
+                transform-style: preserve-3d; /* Ensures children (if any) participate in 3D space */
+                backface-visibility: hidden; /* Hides the 
+
+back of the element when rotated past 90deg */
+                transition: transform 0.3s ease-out; /* For smooth snap back/away animation */
+                transform: translateX(0) rotateY(0); /* Initial state */
+            }
+
+            h1 {
+                color: white;
+                margin-top: -2px; /* Adjusted from vmin to px for consistency */
+                font-size: 5.2vmin;
+                padding: 0.1rem;
+                margin-left: 4px; /* Adjusted from vmin to px */
+            }
+
+            p {
+                color: rgb(255, 0, 140);
+                width: 59vmin;
+                font-size: 3.7vmin;
+                margin-top: -16px; /* Adjusted from vmin to px */
+                margin-left: 4px; /* Adjusted from vmin 
+
+to px */
+            }
+
+            iframe {
+                position: absolute; /* Kept outside .container, so it won't rotate with it */
+                bottom: 0vmin;
+                right: 0vmin;
+                border-radius: 6px;
+                width: 25vw;
+                height: 42vh;
+                border: 1px solid rgb(255, 0, 230);
+            }
+
+            @media (max-aspect-ratio: 16/9) {
+                body {
+                    background-image: url(12th-Failphone.jpeg);
+                    background-size: 100% 100%;
+                }
+                .container {
+                    background-color: rgba(0, 0, 0, 0.461);
+                    width: 90vw; /* Adjust width for better mobile responsiveness */
+
+                    left: 5vw; /* Center it on mobile */
+                }
+                iframe {
+                    bottom: 0;
+                    left: 0px;
+                    border: 1px solid rgb(246, 255, 0);
+                    width: 90vw; /* Adjust width for better mobile responsiveness */
+                    height: 25vh;
+                    left: 5vw; /* Center it on mobile */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="viewport-container">
+            <div class="container">
+                <h1>15. 12th Fail .</h1>
+                <p>An inspiring Indian biographical drama that chronicles the extraordinary journey of a high school dropout who, after a 12-year study, overcomes adversity to achieve his dream of becoming a police officer . </p>
+            </div>
+
+            <iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/WeMJo701mvQ?si=0qZQHH0KceGvaRrl"></iframe>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
         <script>
-            // Get the element you want to apply gestures to (e.g., the body)
-            const bodyElement = document.body;
+            // Get the element that will visually transform (your content container)
+            const pageContent = document.querySelector('.container');
+            // Create a Hammer.js instance on the element that will receive touch events
+            // We'll use the body for general touch detection over the whole screen
+            const mc = new Hammer(document.body);
 
-            // Create a new Hammer.js instance on the body element
-            const mc = new Hammer(bodyElement);
-
-            // Enable swipe recognition, specifically horizontal swipes
-
+            // Configure Hammer.js to detect horizontal pan gestures
+            mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+            // Keep swipe recognition for the final navigation trigger (though panend will handle it)
             mc.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
 
-            // **Crucial: Helper function to navigate and manage browser history**
-            // This function replaces the current history entry, preventing the back button
-            // from stepping through every swiped page.
+            // This object will hold the current transform state during dragging
+            let currentTransform = {
+                translateX: 0,
+                rotateY: 0
+            };
+
+            // Your existing movie list and page logic for determining next/previous URLs (unchanged)
+            const movieList = [
+                "it's a wonderful life.html", "theGodFather.html", "thePassionOfTheChrist.html", "witnessForTheProsecution.html",
+                "intersellar.html", 
+
+"theGodfatherPartII.html", "theLordOfTheRingsTheThreePartsTogether.html", "wildTales.html",
+                "theIsland2006RussianMovie.html", "aPlaceInTheSun.html", "prideAndPrejudice.html", "barryLyndon.html",
+                "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html", "thedarkKnight2008.html", "12thFail.html", "madMaxFuryRoad.html",
+                "braveHeart.html", "benHurr.html", "quoVadis.html", "intoTheWild.html", "theShawshankRedemption.html",
+                "pulpFiction.html", "goodFellas.html", "forrestGump.html", "apocalypto.html", "parasite.html",
+                "theGladiator.html", "onceUponATimaInAmerica.html", "cityOfGod.html", "theHunt.html", "thePianist.html",
+                "theUsualSuspects.html", "djangoUnchained.html", "apocalypseNow.html", "americanHistoryX.html",
+                "schindler'sList.html", 
+
+"theWolfOfWallStreet.html", "theSilenceOfTheLambs.html", "theGreenMile.html",
+                "cinemaParadiso.html", "comeAndSee.html", "vertigo.html", "aClockworkOrange.html", "badBoyBubby.html",
+                "amoresPerros.html", "reservoirDogs.html", "americanBeauty.html", "rearWindow.html", "requiemForADream.html",
+                "theCuriousCaseOfBenjaminButton.html", "theApartment.html", "scarface.html", "catchMeIfYouCan.html",
+                "goneGirl.html", "snatch.html", "memoriesOfMurder.html", "borat.html", "amadeus.html", "psycho.html",
+                "leon.html", "sunsetBoulevard.html", "oldboy.html", "fullMetalJacket.html", "thereWillBeBlood.html",
+                "savingPrivateRyan.html", "theMatrix.html", "toKillAMockingbird.html", "shutterIsland.html",
+                "dialMForMurder.html", "annieHall.html", "onTheWaterfront.html", "wildStrawberries.html", 
+
+"rush.html",
+                "theSeventhSeal.html", "drishyam.html", "oneFlewOverTheCuckoo'sNest.html", "se7en.html", "inception.html",
+                "lordOfWar.html", "theHolyMountain.html", "revenant.html", "sevenSamurai.html", "allAboutEve.html",
+                "dancesWithWolves.html", "theLastSamurai.html", "hacksawRidge.html", "doubleIndemnity.html", "rashomon.html",
+                "mulhollandDrive.html", "theGoodTheBadAndTheUgly.html", "someLikeItHot.html", "aBeautifulMind.html",
+                "chinatown.html", "theThirdMan.html", "M.html", "spotlight.html", "inTheNameOfTheFather.html",
+                "heat.html", "fargo.html", "fightClub.html"
+            ];
+
+            // Helper function to navigate and manage browser history (unchanged)
             function navigateAndReplaceHistory(url) {
                 if (url) {
-                    // This command replaces the current URL in the browser's history
-                    // stack without adding a new entry.
+
                     history.replaceState(null, '', url);
-                    // Then, we actually load the new page.
-                    window.location.href = url;
+                    window.location.href = url; // Load the new page
                 }
             }
 
-            // Listen for swipe left event from Hammer.js
-            mc.on('swipeleft', function() {
-
-                const nextPageURL = getNextPageURL();
-                navigateAndReplaceHistory(nextPageURL); // Use the history-aware navigation
-            });
-
-            // Listen for swipe right event from Hammer.js
-            mc.on('swiperight', function() {
-                const previousPageURL = getPreviousPageURL();
-                navigateAndReplaceHistory(previousPageURL); // Use the history-aware navigation
-            });
-
-            // Your existing movie list and page logic for determining next/previous URLs
             function getPreviousPageURL() {
                 const currentPage = window.location.pathname.split('/').pop();
-                const movieList = [
-                    "it'sAWonderfulLife.html",
-
-                    "theGodFather.html",
-                    "thePassionOfTheChrist.html",
-                    "witnessForTheProsecution.html",
-                    "intersellar.html",
-                    "theGodfatherPartII.html",
-                    "theLordOfTheRingsTheThreePartsTogether.html",
-                    "wildTales.html",
-                    "theIsland2006RussianMovie.html",
-                    "aPlaceInTheSun.html",
-                    "prideAndPrejudice.html",
-                    "barryLyndon.html",
-                    "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
-                    "thedarkKnight2008.html",
-                    "12thFail.html",
-                    "madMaxFuryRoad.html",
-                    "braveHeart.html",
-                    "benHurr.html",
-                    "quoVadis.html",
-                    "intoTheWild.html",
-                    "theShawshankRedemption.html",
-
-                    "pulpFiction.html",
-                    "goodFellas.html",
-                    "forrestGump.html",
-                    "apocalypto.html",
-                    "parasite.html",
-                    "theGladiator.html",
-                    "onceUponATimaInAmerica.html",
-                    "cityOfGod.html",
-                    "theHunt.html",
-                    "thePianist.html",
-                    "theUsualSuspects.html",
-                    "djangoUnchained.html",
-                    "apocalypseNow.html",
-                    "americanHistoryX.html",
-                    "schindler'sList.html",
-                    "theWolfOfWallStreet.html",
-                    "theSilenceOfTheLambs.html",
-                    "theGreenMile.html",
-                    "cinemaParadiso.html",
-                    "comeAndSee.html",
-                    "vertigo.html",
-                    "aClockworkOrange.html",
-                    "badBoyBubby.html",
-                    "amoresPerros.html",
-
-                    "reservoirDogs.html",
-                    "americanBeauty.html",
-                    "rearWindow.html",
-                    "requiemForADream.html",
-                    "theCuriousCaseOfBenjaminButton.html",
-                    "theApartment.html",
-                    "scarface.html",
-                    "catchMeIfYouCan.html",
-                    "goneGirl.html",
-                    "snatch.html",
-                    "memoriesOfMurder.html",
-                    "borat.html",
-                    "amadeus.html",
-                    "psycho.html",
-                    "leon.html",
-                    "sunsetBoulevard.html",
-                    "oldboy.html",
-                    "fullMetalJacket.html",
-                    "thereWillBeBlood.html",
-                    "savingPrivateRyan.html",
-                    "theMatrix.html",
-                    "toKillAMockingbird.html",
-                    "shutterIsland.html",
-
-                    "dialMForMurder.html",
-                    "annieHall.html",
-                    "onTheWaterfront.html",
-                    "wildStrawberries.html",
-                    "rush.html",
-                    "theSeventhSeal.html",
-                    "drishyam.html",
-                    "oneFlewOverTheCuckoo'sNest.html",
-                    "se7en.html",
-                    "inception.html",
-                    "lordOfWar.html",
-                    "theHolyMountain.html",
-                    "revenant.html",
-                    "sevenSamurai.html",
-                    "allAboutEve.html",
-                    "dancesWithWolves.html",
-                    "theLastSamurai.html",
-                    "hacksawRidge.html",
-                    "doubleIndemnity.html",
-                    "rashomon.html",
-                    "mulhollandDrive.html",
-                    "theGoodTheBadAndTheUgly.html",
-                    "someLikeItHot.html",
-                    "aBeautifulMind.html",
-
-                    "chinatown.html",
-                    "theThirdMan.html",
-                    "M.html",
-                    "spotlight.html",
-                    "inTheNameOfTheFather.html",
-                    "heat.html",
-                    "fargo.html",
-                    "fightClub.html"
-                ];
                 const currentIndex = movieList.indexOf(currentPage);
                 if (currentIndex > 0) {
                     return movieList[currentIndex - 1];
@@ -232,119 +174,110 @@
 
             function getNextPageURL() {
                 const currentPage = window.location.pathname.split('/').pop();
-                const movieList = [
-                    "it'sAWonderfulLife.html",
-                    "theGodFather.html",
-
-                    "thePassionOfTheChrist.html",
-                    "witnessForTheProsecution.html",
-                    "intersellar.html",
-                    "theGodfatherPartII.html",
-                    "theLordOfTheRingsTheThreePartsTogether.html",
-                    "wildTales.html",
-                    "theIsland2006RussianMovie.html",
-                    "aPlaceInTheSun.html",
-                    "prideAndPrejudice.html",
-                    "barryLyndon.html",
-                    "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
-                    "thedarkKnight2008.html",
-                    "12thFail.html",
-                    "madMaxFuryRoad.html",
-                    "braveHeart.html",
-                    "benHurr.html",
-                    "quoVadis.html",
-                    "intoTheWild.html",
-                    "theShawshankRedemption.html",
-                    "pulpFiction.html",
-
-                    "goodFellas.html",
-                    "forrestGump.html",
-                    "apocalypto.html",
-                    "parasite.html",
-                    "theGladiator.html",
-                    "onceUponATimaInAmerica.html",
-                    "cityOfGod.html",
-                    "theHunt.html",
-                    "thePianist.html",
-                    "theUsualSuspects.html",
-                    "djangoUnchained.html",
-                    "apocalypseNow.html",
-                    "americanHistoryX.html",
-                    "schindler'sList.html",
-                    "theWolfOfWallStreet.html",
-                    "theSilenceOfTheLambs.html",
-                    "theGreenMile.html",
-                    "cinemaParadiso.html",
-                    "comeAndSee.html",
-                    "vertigo.html",
-                    "aClockworkOrange.html",
-                    "badBoyBubby.html",
-                    "amoresPerros.html",
-                    "reservoirDogs.html",
-
-                    "americanBeauty.html",
-                    "rearWindow.html",
-                    "requiemForADream.html",
-                    "theCuriousCaseOfBenjaminButton.html",
-                    "theApartment.html",
-                    "scarface.html",
-                    "catchMeIfYouCan.html",
-                    "goneGirl.html",
-                    "snatch.html",
-                    "memoriesOfMurder.html",
-                    "borat.html",
-                    "amadeus.html",
-                    "psycho.html",
-                    "leon.html",
-                    "sunsetBoulevard.html",
-                    "oldboy.html",
-                    "fullMetalJacket.html",
-                    "thereWillBeBlood.html",
-                    "savingPrivateRyan.html",
-                    "theMatrix.html",
-                    "toKillAMockingbird.html",
-                    "shutterIsland.html",
-                    "dialMForMurder.html",
-
-                    "annieHall.html",
-                    "onTheWaterfront.html",
-                    "wildStrawberries.html",
-                    "rush.html",
-                    "theSeventhSeal.html",
-                    "drishyam.html",
-                    "oneFlewOverTheCuckoo'sNest.html",
-                    "se7en.html",
-                    "inception.html",
-                    "lordOfWar.html",
-                    "theHolyMountain.html",
-                    "revenant.html",
-                    "sevenSamurai.html",
-                    "allAboutEve.html",
-                    "dancesWithWolves.html",
-                    "theLastSamurai.html",
-                    "hacksawRidge.html",
-                    "doubleIndemnity.html",
-                    "rashomon.html",
-                    "mulhollandDrive.html",
-                    "theGoodTheBadAndTheUgly.html",
-                    "someLikeItHot.html",
-                    "aBeautifulMind.html",
-                    "chinatown.html",
-
-                    "theThirdMan.html",
-                    "M.html",
-                    "spotlight.html",
-                    "inTheNameOfTheFather.html",
-                    "heat.html",
-                    "fargo.html",
-                    "fightClub.html"
-                ];
                 const currentIndex = movieList.indexOf(currentPage);
                 if (currentIndex < movieList.length - 1) {
+
                     return movieList[currentIndex + 1];
                 }
                 return movieList[0]; // Loop to first page if at last
             }
+
+            // --- Hammer.js Event Listeners for Rotation ---
+
+            // When the pan gesture starts (user touches and starts dragging)
+            mc.on('panstart', (ev) => {
+                // Disable CSS transition during pan to allow smooth, real-time dragging
+                pageContent.style.transition = 'none';
+            });
+
+            // While the user is panning (dragging their finger across the screen)
+            mc.on('pan', (ev) => {
+                const deltaX = ev.deltaX; // Get the horizontal distance dragged
+
+                // Define how much rotation occurs 
+
+based on drag distance
+                const maxRotateAngle = 30; // Max rotation in degrees (adjust for desired effect, e.g., 20-45)
+                // The distance the user needs to drag horizontally to achieve the maxRotateAngle
+                const swipeDistanceForMaxRotation = window.innerWidth / 3; // Adjust sensitivity (e.g., /2 for more rotation)
+
+                // Update horizontal translation
+                currentTransform.translateX = deltaX;
+
+                // Calculate the Y-axis rotation based on deltaX
+                let calculatedRotateY = (deltaX / swipeDistanceForMaxRotation) * maxRotateAngle;
+                // Clamp the rotation: prevent it from going beyond the max angle
+                currentTransform.rotateY = Math.max(-maxRotateAngle, Math.min(maxRotateAngle, calculatedRotateY));
+
+                // Apply the combined transform (translate X and rotate Y) in real-time
+                pageContent.style.transform = `
+                    translateX(${currentTransform.translateX}px)
+                    rotateY(${currentTransform.rotateY}deg)
+                `;
+            });
+
+            // When the pan gesture ends (user lifts their finger)
+            mc.on('panend', (ev) => {
+                // Re-enable CSS transition for the final snap-back or snap-out animation
+                pageContent.style.transition = 'transform 0.3s ease-out';
+
+                const swipeThreshold = 100; // Minimum pixels dragged to trigger a page change
+                const velocityThreshold = 0.5; // Minimum velocity (speed) of swipe to trigger a page change
+
+
+                // Check if the swipe was strong enough to trigger a full page change
+                if (Math.abs(ev.deltaX) > swipeThreshold || Math.abs(ev.velocity) > velocityThreshold) {
+                    // A significant horizontal swipe occurred, animate the page completely off-screen
+                    let targetX = 0;
+                    let targetRotateY = 0;
+                    let nextPageURL = null; // Variable to store the URL to navigate to
+
+                    if (ev.deltaX > 0) { // Swiped right (to the previous page)
+                        targetX = window.innerWidth; // Move off to the right of the screen
+                        targetRotateY = 90; // Rotate 90 degrees (a full flip) as it goes off
+                        nextPageURL = getPreviousPageURL(); // Get the URL for the previous page
+                        console.log('Swiped right - 
+
+preparing to transition to previous page');
+                    } else { // Swiped left (to the next page)
+                        targetX = -window.innerWidth; // Move off to the left of the screen
+                        targetRotateY = -90; // Rotate -90 degrees as it goes off
+                        nextPageURL = getNextPageURL(); // Get the URL for the next page
+                        console.log('Swiped left - preparing to transition to next page');
+                    }
+
+                    // Apply the final off-screen transform to initiate the CSS animation
+                    pageContent.style.transform = `
+                        translateX(${targetX}px)
+                        rotateY(${targetRotateY}deg)
+                    `;
+
+                    // Crucial: Delay the actual page navigation until the visual animation completes
+                    setTimeout(() => {
+                        if (nextPageURL) {
+
+                            // This command replaces the current URL in the browser's history
+                            // stack without adding a new entry, and then loads the new page.
+                            history.replaceState(null, '', nextPageURL);
+                            window.location.href = nextPageURL; // Navigate to the new page
+                        }
+                    }, 300); // This timeout should match the 'transition' duration in your CSS (0.3s)
+
+                } else {
+                    // The swipe was not strong enough, snap the page back to its original position
+                    pageContent.style.transform = `
+                        translateX(0px)
+                        rotateY(0deg)
+                    `;
+                    // Reset the internal transform state
+                    currentTransform = {
+                        translateX: 0,
+                        rotateY: 0
+                    };
+
+                    console.log('Swipe cancelled - snapped back to original state');
+                }
+            });
         </script>
     </body>
 </html>
