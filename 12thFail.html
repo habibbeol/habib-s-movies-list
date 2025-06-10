@@ -1,350 +1,258 @@
 
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            background-image:url(12fail.webp);
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            background-position: center;
-          background-repeat: no-repeat;
-        }
-       
-
-        .container {
-            top: 0vmin;
-
-            left: 0.7vmin;
-            height:auto;
-            width: 63vmin;
-            background-color:rgba(75, 75, 75, 0.854);
-            position: absolute;
-            border-radius: 6px;
-        }
-        h1{
-            color:white;
-            margin-top: 0;
-            font-size: 5.2vmin;
-            padding: 0.1rem;
-            margin-left: 4;
-        }
-        p{
-            color:rgb(255, 0, 140);
-            width: 62vmin;
-            font-size: 3.7vmin;
-            margin-top: -16;
-            margin-left: 4;
-        }
-        iframe{
-            position: absolute;
-            bottom: 0vmin;
-
-            right :0vmin;
-            border-radius: 6px;
-            width: 25vw;
-            height: 42vh;
-            border: 1px solid rgb(255, 0, 230);
-        }
-        @media (max-aspect-ratio: 16/9){
-            body{
-                background-image: url(12th-Failphone.jpeg);
-                background-size:100% 100%;
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>12th Fail</title>
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden; /* Prevent body scroll during animation */
+                background-image: url(12fail.webp);
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                background-position: center;
             }
+
+            .viewport-container {
+                perspective: 1200px; /* Crucial for 3D effect. Adjust this value! */
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+
+                position: relative;
+            }
+
             .container {
-                background-color: rgba(0, 0, 0, 0.461);
-                left:0.4vw;
-            }
-            iframe {
-                bottom: 0;
-                left: 0px;
-                border:1px solid rgb(246, 255, 0);
-                width: 58vw;
-                height:25vh ;
-            }
-        }
-    </style>
+                top: 0vmin;
+                left: 0.7vmin;
+                height: auto;
+                width: 60vmin;
+                background-color: rgba(75, 75, 75, 0.854);
+                position: absolute;
+                border-radius: 6px;
 
-</head>
-<body>
-    <div class="container">
-        <h1>15. 12th Fail .</h1>
-        <p>An inspiring Indian biographical drama that chronicles the extraordinary journey of a high school dropout who, after a 12-year study, overcomes adversity to achieve his dream of becoming a police officer . </p>
-    </div>
-    <iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/WeMJo701mvQ?si=0qZQHH0KceGvaRrl">
-    </iframe>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+                /* New: 3D transform properties */
+                transform-style: preserve-3d;
+                backface-visibility: hidden;
+                transition: transform 0.3s ease-out; /* For smooth snap back/away */
+                transform: translateX(0) rotateY(0); /* Initial state */
+            }
+
+            h1 {
+                color: white;
+
+                margin-top: -2px;
+                font-size: 5.2vmin;
+                padding: 0.1rem;
+                margin-left: 4px;
+            }
+
+            p {
+                color: rgb(255, 0, 140);
+                width: 59vmin;
+                font-size: 3.7vmin;
+                margin-top: -16px;
+                margin-left: 4px;
+            }
+
+            iframe {
+                position: absolute;
+                bottom: 0vmin;
+                right: 0vmin;
+                border-radius: 6px;
+                width: 25vw;
+                height: 42vh;
+                border: 1px solid rgb(255, 0, 230);
+            }
+
+            @media (max-aspect-ratio: 16/9) {
+                body {
+                    background-image: url(12th-Failphone.jpeg);
+                    background-size: 100% 100%;
+                }
+                .container {
+                    background-color: rgba(0, 0, 0, 0.461);
+                    width: 90vw;
+                    left: 5vw;
+                }
+                iframe {
+                    bottom: 0;
+                    left: 0px;
+                    border: 1px solid rgb(246, 255, 0);
+                    width: 90vw;
+                    height: 25vh;
+                    left: 5vw;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="viewport-container">
+
+            <div class="container">
+                <h1>15. 12th Fail .</h1>
+                <p>An inspiring Indian biographical drama that chronicles the extraordinary journey of a high school dropout who, after a 12-year study, overcomes adversity to achieve his dream of becoming a police officer . </p>
+            </div>
+            <iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" width="320vmin" height="233vmin" src="https://www.youtube.com/embed/WeMJo701mvQ?si=0qZQHH0KceGvaRrl"></iframe>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
         <script>
-            // Get the element you want to apply gestures to (e.g., the body)
-            const bodyElement = document.body;
+            const pageContent = document.querySelector('.container');
+            const mc = new 
 
-            // Create a new Hammer.js instance on the body element
-            const mc = new Hammer(bodyElement);
+Hammer(document.body);
 
-            // Enable swipe recognition, specifically horizontal swipes
-
+            // Configure Hammer.js for horizontal pan AND swipe gestures
+            // Pan is for real-time dragging, Swipe is for the final navigation trigger
+            mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
             mc.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
 
-            // **Crucial: Helper function to navigate and manage browser history**
-            // This function replaces the current history entry, preventing the back button
-            // from stepping through every swiped page.
+            let currentTransform = {
+                translateX: 0,
+                rotateY: 0
+            };
+
+            const movieList = [
+                "it's a wonderful life.html", "theGodFather.html", "thePassionOfTheChrist.html", "witnessForTheProsecution.html",
+                "intersellar.html", "theGodfatherPartII.html", "theLordOfTheRingsTheThreePartsTogether.html
+
+", "wildTales.html",
+                "theIsland2006RussianMovie.html", "aPlaceInTheSun.html", "prideAndPrejudice.html", "barryLyndon.html",
+                "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html", "thedarkKnight2008.html", "12thFail.html", "madMaxFuryRoad.html",
+                "braveHeart.html", "benHurr.html", "quoVadis.html", "intoTheWild.html", "theShawshankRedemption.html",
+                "pulpFiction.html", "goodFellas.html", "forrestGump.html", "apocalypto.html", "parasite.html",
+                "theGladiator.html", "onceUponATimaInAmerica.html", "cityOfGod.html", "theHunt.html", "thePianist.html",
+                "theUsualSuspects.html", "djangoUnchained.html", "apocalypseNow.html", "americanHistoryX.html",
+                "schindler'sList.html", "theWolfOfWallStreet.html", "theSilenceOfTheLambs.html", 
+
+"theGreenMile.html",
+                "cinemaParadiso.html", "comeAndSee.html", "vertigo.html", "aClockworkOrange.html", "badBoyBubby.html",
+                "amoresPerros.html", "reservoirDogs.html", "americanBeauty.html", "rearWindow.html", "requiemForADream.html",
+                "theCuriousCaseOfBenjaminButton.html", "theApartment.html", "scarface.html", "catchMeIfYouCan.html",
+                "goneGirl.html", "snatch.html", "memoriesOfMurder.html", "borat.html", "amadeus.html", "psycho.html",
+                "leon.html", "sunsetBoulevard.html", "oldboy.html", "fullMetalJacket.html", "thereWillBeBlood.html",
+                "savingPrivateRyan.html", "theMatrix.html", "toKillAMockingbird.html", "shutterIsland.html",
+                "dialMForMurder.html", "annieHall.html", "onTheWaterfront.html", "wildStrawberries.html", "rush.html",
+                "theSeventhSeal.html", "drishyam.html", 
+
+"oneFlewOverTheCuckoo'sNest.html", "se7en.html", "inception.html",
+                "lordOfWar.html", "theHolyMountain.html", "revenant.html", "sevenSamurai.html", "allAboutEve.html",
+                "dancesWithWolves.html", "theLastSamurai.html", "hacksawRidge.html", "doubleIndemnity.html", "rashomon.html",
+                "mulhollandDrive.html", "theGoodTheBadAndTheUgly.html", "someLikeItHot.html", "aBeautifulMind.html",
+                "chinatown.html", "theThirdMan.html", "M.html", "spotlight.html", "inTheNameOfTheFather.html",
+                "heat.html", "fargo.html", "fightClub.html"
+            ];
+
             function navigateAndReplaceHistory(url) {
                 if (url) {
-                    // This command replaces the current URL in the browser's history
-                    // stack without adding a new entry.
                     history.replaceState(null, '', url);
-                    // Then, we actually load the new page.
                     window.location.href = url;
                 }
             }
 
-            // Listen for swipe left event from Hammer.js
-            mc.on('swipeleft', function() {
 
-                const nextPageURL = getNextPageURL();
-                navigateAndReplaceHistory(nextPageURL); // Use the history-aware navigation
-            });
-
-            // Listen for swipe right event from Hammer.js
-            mc.on('swiperight', function() {
-                const previousPageURL = getPreviousPageURL();
-                navigateAndReplaceHistory(previousPageURL); // Use the history-aware navigation
-            });
-
-            // Your existing movie list and page logic for determining next/previous URLs
             function getPreviousPageURL() {
                 const currentPage = window.location.pathname.split('/').pop();
-                const movieList = [
-                    "it'sAWonderfulLife.html",
-
-                    "theGodFather.html",
-                    "thePassionOfTheChrist.html",
-                    "witnessForTheProsecution.html",
-                    "intersellar.html",
-                    "theGodfatherPartII.html",
-                    "theLordOfTheRingsTheThreePartsTogether.html",
-                    "wildTales.html",
-                    "theIsland2006RussianMovie.html",
-                    "aPlaceInTheSun.html",
-                    "prideAndPrejudice.html",
-                    "barryLyndon.html",
-                    "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
-                    "thedarkKnight2008.html",
-                    "12thFail.html",
-                    "madMaxFuryRoad.html",
-                    "braveHeart.html",
-                    "benHurr.html",
-                    "quoVadis.html",
-                    "intoTheWild.html",
-                    "theShawshankRedemption.html",
-
-                    "pulpFiction.html",
-                    "goodFellas.html",
-                    "forrestGump.html",
-                    "apocalypto.html",
-                    "parasite.html",
-                    "theGladiator.html",
-                    "onceUponATimaInAmerica.html",
-                    "cityOfGod.html",
-                    "theHunt.html",
-                    "thePianist.html",
-                    "theUsualSuspects.html",
-                    "djangoUnchained.html",
-                    "apocalypseNow.html",
-                    "americanHistoryX.html",
-                    "schindler'sList.html",
-                    "theWolfOfWallStreet.html",
-                    "theSilenceOfTheLambs.html",
-                    "theGreenMile.html",
-                    "cinemaParadiso.html",
-                    "comeAndSee.html",
-                    "vertigo.html",
-                    "aClockworkOrange.html",
-                    "badBoyBubby.html",
-                    "amoresPerros.html",
-
-                    "reservoirDogs.html",
-                    "americanBeauty.html",
-                    "rearWindow.html",
-                    "requiemForADream.html",
-                    "theCuriousCaseOfBenjaminButton.html",
-                    "theApartment.html",
-                    "scarface.html",
-                    "catchMeIfYouCan.html",
-                    "goneGirl.html",
-                    "snatch.html",
-                    "memoriesOfMurder.html",
-                    "borat.html",
-                    "amadeus.html",
-                    "psycho.html",
-                    "leon.html",
-                    "sunsetBoulevard.html",
-                    "oldboy.html",
-                    "fullMetalJacket.html",
-                    "thereWillBeBlood.html",
-                    "savingPrivateRyan.html",
-                    "theMatrix.html",
-                    "toKillAMockingbird.html",
-                    "shutterIsland.html",
-
-                    "dialMForMurder.html",
-                    "annieHall.html",
-                    "onTheWaterfront.html",
-                    "wildStrawberries.html",
-                    "rush.html",
-                    "theSeventhSeal.html",
-                    "drishyam.html",
-                    "oneFlewOverTheCuckoo'sNest.html",
-                    "se7en.html",
-                    "inception.html",
-                    "lordOfWar.html",
-                    "theHolyMountain.html",
-                    "revenant.html",
-                    "sevenSamurai.html",
-                    "allAboutEve.html",
-                    "dancesWithWolves.html",
-                    "theLastSamurai.html",
-                    "hacksawRidge.html",
-                    "doubleIndemnity.html",
-                    "rashomon.html",
-                    "mulhollandDrive.html",
-                    "theGoodTheBadAndTheUgly.html",
-                    "someLikeItHot.html",
-                    "aBeautifulMind.html",
-
-                    "chinatown.html",
-                    "theThirdMan.html",
-                    "M.html",
-                    "spotlight.html",
-                    "inTheNameOfTheFather.html",
-                    "heat.html",
-                    "fargo.html",
-                    "fightClub.html"
-                ];
                 const currentIndex = movieList.indexOf(currentPage);
                 if (currentIndex > 0) {
                     return movieList[currentIndex - 1];
                 }
-                return movieList[movieList.length - 1]; // Loop to last page if at first
+                return movieList[movieList.length - 1];
             }
 
             function getNextPageURL() {
                 const currentPage = window.location.pathname.split('/').pop();
-                const movieList = [
-                    "it'sAWonderfulLife.html",
-                    "theGodFather.html",
-
-                    "thePassionOfTheChrist.html",
-                    "witnessForTheProsecution.html",
-                    "intersellar.html",
-                    "theGodfatherPartII.html",
-                    "theLordOfTheRingsTheThreePartsTogether.html",
-                    "wildTales.html",
-                    "theIsland2006RussianMovie.html",
-                    "aPlaceInTheSun.html",
-                    "prideAndPrejudice.html",
-                    "barryLyndon.html",
-                    "piratesOfTheCaribbeanTheCurseOfTheBlackPearl.html",
-                    "thedarkKnight2008.html",
-                    "12thFail.html",
-                    "madMaxFuryRoad.html",
-                    "braveHeart.html",
-                    "benHurr.html",
-                    "quoVadis.html",
-                    "intoTheWild.html",
-                    "theShawshankRedemption.html",
-                    "pulpFiction.html",
-
-                    "goodFellas.html",
-                    "forrestGump.html",
-                    "apocalypto.html",
-                    "parasite.html",
-                    "theGladiator.html",
-                    "onceUponATimaInAmerica.html",
-                    "cityOfGod.html",
-                    "theHunt.html",
-                    "thePianist.html",
-                    "theUsualSuspects.html",
-                    "djangoUnchained.html",
-                    "apocalypseNow.html",
-                    "americanHistoryX.html",
-                    "schindler'sList.html",
-                    "theWolfOfWallStreet.html",
-                    "theSilenceOfTheLambs.html",
-                    "theGreenMile.html",
-                    "cinemaParadiso.html",
-                    "comeAndSee.html",
-                    "vertigo.html",
-                    "aClockworkOrange.html",
-                    "badBoyBubby.html",
-                    "amoresPerros.html",
-                    "reservoirDogs.html",
-
-                    "americanBeauty.html",
-                    "rearWindow.html",
-                    "requiemForADream.html",
-                    "theCuriousCaseOfBenjaminButton.html",
-                    "theApartment.html",
-                    "scarface.html",
-                    "catchMeIfYouCan.html",
-                    "goneGirl.html",
-                    "snatch.html",
-                    "memoriesOfMurder.html",
-                    "borat.html",
-                    "amadeus.html",
-                    "psycho.html",
-                    "leon.html",
-                    "sunsetBoulevard.html",
-                    "oldboy.html",
-                    "fullMetalJacket.html",
-                    "thereWillBeBlood.html",
-                    "savingPrivateRyan.html",
-                    "theMatrix.html",
-                    "toKillAMockingbird.html",
-                    "shutterIsland.html",
-                    "dialMForMurder.html",
-
-                    "annieHall.html",
-                    "onTheWaterfront.html",
-                    "wildStrawberries.html",
-                    "rush.html",
-                    "theSeventhSeal.html",
-                    "drishyam.html",
-                    "oneFlewOverTheCuckoo'sNest.html",
-                    "se7en.html",
-                    "inception.html",
-                    "lordOfWar.html",
-                    "theHolyMountain.html",
-                    "revenant.html",
-                    "sevenSamurai.html",
-                    "allAboutEve.html",
-                    "dancesWithWolves.html",
-                    "theLastSamurai.html",
-                    "hacksawRidge.html",
-                    "doubleIndemnity.html",
-                    "rashomon.html",
-                    "mulhollandDrive.html",
-                    "theGoodTheBadAndTheUgly.html",
-                    "someLikeItHot.html",
-                    "aBeautifulMind.html",
-                    "chinatown.html",
-
-                    "theThirdMan.html",
-                    "M.html",
-                    "spotlight.html",
-                    "inTheNameOfTheFather.html",
-                    "heat.html",
-                    "fargo.html",
-                    "fightClub.html"
-                ];
                 const currentIndex = movieList.indexOf(currentPage);
                 if (currentIndex < movieList.length - 1) {
                     return movieList[currentIndex + 1];
                 }
-                return movieList[0]; // Loop to first page if at last
+                return movieList[0];
             }
+
+            // --- Hammer.js Event Listeners ---
+
+
+            // 1. Panstart: User begins dragging
+            mc.on('panstart', (ev) => {
+                pageContent.style.transition = 'none'; // Disable CSS transition for smooth real-time drag
+            });
+
+            // 2. Pan: User is actively dragging
+            mc.on('pan', (ev) => {
+                const deltaX = ev.deltaX;
+
+                const maxRotateAngle = 30; // Max rotation in degrees
+                const swipeDistanceForMaxRotation = window.innerWidth / 3;
+
+                currentTransform.translateX = deltaX;
+                let calculatedRotateY = (deltaX / swipeDistanceForMaxRotation) * maxRotateAngle;
+                currentTransform.rotateY = Math.max(-maxRotateAngle, Math.min(maxRotateAngle, calculatedRotateY));
+
+                // Apply real-time visual transform
+                pageContent.style.transform = `
+                    translateX(${currentTransform.translateX}px)
+                    rotateY(${currentTransform.rotateY}deg)
+                `;
+            });
+
+            // 3. Panend: User stops dragging, but NO swipe gesture was recognized
+            mc.on('panend', (ev) => {
+                // Check if a swipe event occurred. If it did, the swipeleft/swiperight handler will take over.
+                // If not, it means the drag was not strong/fast enough to be a 'swipe'.
+                // We compare the final deltaX or velocity against the swipe thresholds.
+                const swipeThreshold = 100;
+                const velocityThreshold = 0.5;
+
+                if (Math.abs(ev.deltaX) < swipeThreshold && Math.abs(ev.velocity) < 
+
+velocityThreshold) {
+                    // Not a strong enough swipe, snap back to original position
+                    pageContent.style.transition = 'transform 0.3s ease-out'; // Re-enable transition
+                    pageContent.style.transform = `
+                        translateX(0px)
+                        rotateY(0deg)
+                    `;
+                    currentTransform = { translateX: 0, rotateY: 0 }; // Reset state
+                    console.log('Drag ended, not a swipe - snapped back.');
+                }
+                // If it IS a swipe, the swipeleft/swiperight events will be fired by Hammer.js,
+                // and they will handle the final animation and navigation.
+            });
+
+            // 4. Swipeleft: User performs a strong left swipe
+            mc.on('swipeleft', function() {
+                const nextPageURL = 
+
+getNextPageURL();
+                pageContent.style.transition = 'transform 0.3s ease-out'; // Ensure transition is enabled
+                pageContent.style.transform = `
+                    translateX(-${window.innerWidth}px)
+                    rotateY(-90deg)
+                `;
+                console.log('Swipe left detected - animating and navigating to next page.');
+                setTimeout(() => {
+                    navigateAndReplaceHistory(nextPageURL);
+                }, 300); // Match CSS transition duration
+            });
+
+            // 5. Swiperight: User performs a strong right swipe
+            mc.on('swiperight', function() {
+                const previousPageURL = getPreviousPageURL();
+                pageContent.style.transition = 'transform 0.3s ease-out'; // Ensure transition is enabled
+
+                pageContent.style.transform = `
+                    translateX(${window.innerWidth}px)
+                    rotateY(90deg)
+                `;
+                console.log('Swipe right detected - animating and navigating to previous page.');
+                setTimeout(() => {
+                    navigateAndReplaceHistory(previousPageURL);
+                }, 300); // Match CSS transition duration
+            });
         </script>
     </body>
 </html>
