@@ -407,7 +407,28 @@ background-image: url(TheGodfather.jpg);
                 return movieList[0]; // Loop to first page if at last
             }
         </script>
-   
+       <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const leftArrow = document.getElementById('leftArrow');
+            const rightArrow = 
+
+document.getElementById('rightArrow');
+
+            // Step 1: Wait a short moment after the page loads (e.g., 500ms)
+            // before making the arrows visible.
+            setTimeout(() => {
+                leftArrow.classList.add('show');    // Add 'show' class to make them visible
+                rightArrow.classList.add('show');
+            }, 500); // Arrows appear after 0.5 seconds
+
+            // Step 2: After the arrows have been visible for a while (e.g., 2.5 seconds),
+            // start fading them out.
+            setTimeout(() => {
+                leftArrow.classList.remove('show'); // Remove 'show' class to fade them out
+                rightArrow.classList.remove('show');
+            }, 4000); // Arrows start fading out after a total of 3 seconds (0.5s delay + 2.5s visible time)
+        });
+    </script>
     </body>
 </html>
 
