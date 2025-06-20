@@ -48,6 +48,66 @@ margin-left: 4;
     height: 42vh;
     border: 1px solid rgb(255, 0, 0);
 }
+                      /* --- Swipe Hint Arrows Container --- */
+        .swipe-hint-arrows {
+            position: fixed; /* Fixes the arrows to the viewport */
+            top: 50%; /* Vertically center the container */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between; /* Push arrows to the far left and right */
+            transform: translateY(-50%); /* Adjust for perfect vertical centering */
+            pointer-events: none; /* CRUCIAL: Allows touch events to pass through the arrows */
+            z-index: 1000; /* Ensure arrows are above other content temporarily */
+        }
+
+        /* --- Individual Arrow Styling --- */
+        .swipe-arrow {
+            width: 35px; /* Size of the square area for 
+
+the arrow */
+            height: 35px;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.8s ease-in-out; /* Smooth fade effect */
+        }
+
+        /* Arrow shape using pseudo-element and border trick */
+        .swipe-arrow::before {
+            content: '';
+            display: block; /* Make it a block to control dimensions */
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(255, 0, 0, 0.8); /* Blue color, slightly transparent */
+            box-sizing: border-box; /* Include padding/border in width/height */
+        }
+
+        /* Left Arrow Specifics */
+        .swipe-arrow.left-arrow {
+            margin-left: 15px; /* Distance from left 
+
+edge */
+        }
+        .swipe-arrow.left-arrow::before {
+            border-bottom: none; /* Remove bottom border */
+            border-right: none;  /* Remove right border */
+            transform: rotate(-45deg); /* Rotates the remaining L-shape into a left arrow */
+        }
+
+        /* Right Arrow Specifics */
+        .swipe-arrow.right-arrow {
+            margin-right: 15px; /* Distance from right edge */
+        }
+        .swipe-arrow.right-arrow::before {
+            border-bottom: none; /* Remove bottom border */
+            border-left: none;   /* Remove left border */
+            transform: rotate(45deg); /* Rotates the remaining L-shape into a right arrow */
+        }
+
+
+        /* JavaScript controls adding/removing this class to trigger visibility */
+        .swipe-arrow.show {
+            opacity: 1; /* Fully visible */
+        }
             @media (max-aspect-ratio: 16/9){
                 body{
 background-image: url(passion.jpg);
