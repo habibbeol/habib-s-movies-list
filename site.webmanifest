@@ -16,8 +16,8 @@
   "theme_color": "#00FAFA",
   "background_color": "#ffffff",
   "display": "standalone",
-  "start_url": "https://beolmovies.lovestoblog.com/index.php"
-}
+  "start_url": "https://beolmovies.lovestoblog.com/index.php",
+
 
 
 "screenshots": [
@@ -50,3 +50,4 @@
 "label": "Movie list mobile view movie"
 }
 ]
+}
