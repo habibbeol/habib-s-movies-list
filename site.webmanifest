@@ -18,3 +18,35 @@
   "display": "standalone",
   "start_url": "https://beolmovies.lovestoblog.com/index.php"
 }
+
+
+"screenshots": [
+{
+"src": "Screenshot-PC-main.png",
+"sizes": "1280x720",
+"type": "image/png",
+"form_factor": "wide",
+"label": "Movie list desktop view main"
+},
+{
+"src": "Screenshot-PC-movie.png",
+"sizes": "1280x720",
+"type": "image/png",
+"form_factor": "wide",
+"label": "Movie list desktop view movie"
+},
+{
+"src": "Screenshot-phone-main.jpg",
+"sizes": "320x640",
+"type": "image/jpg",
+"form_factor": "narrow",
+"label": "Movie list mobile view main"
+},
+{
+"src": "Screenshot-phone-movie.jpg",
+"sizes": "320x640",
+"type": "image/jpg",
+"form_factor": "narrow",
+"label": "Movie list mobile view movie"
+}
+]
