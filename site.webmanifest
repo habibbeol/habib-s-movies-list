@@ -30,8 +30,8 @@
 },
 {
 "src": "Screenshot-phone-main.jpg",
-"sizes": "1080×2340",
-"type": "image/jpg",
+"sizes": "1080x2340",
+"type": "image/jpeg",
 "form_factor": "narrow",
 "label": "Movie list mobile view main"
 }
