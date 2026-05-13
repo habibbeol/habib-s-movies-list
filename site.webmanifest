@@ -29,25 +29,11 @@
 "label": "Movie list desktop view main"
 },
 {
-"src": "Screenshot-PC-movie.png",
-"sizes": "1918x1009",
-"type": "image/png",
-"form_factor": "wide",
-"label": "Movie list desktop view movie"
-},
-{
 "src": "Screenshot-phone-main.jpg",
 "sizes": "1080×2340",
 "type": "image/jpg",
 "form_factor": "narrow",
 "label": "Movie list mobile view main"
-},
-{
-"src": "Screenshot-phone-movie.jpg",
-"sizes": "1080×2340",
-"type": "image/jpg",
-"form_factor": "narrow",
-"label": "Movie list mobile view movie"
 }
 ]
 }
